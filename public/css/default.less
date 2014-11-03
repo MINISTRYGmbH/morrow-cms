@@ -1,0 +1,86 @@
+@import "mixins";
+@import "reset";
+@import "components";
+@import "forms";
+
+@color1: #18BC9B; // blue
+@color2: #E74364; // red
+@desktop:   ~"only screen and (min-width: 1025px)";
+@tablet:    ~"only screen and (min-width: 361px)";
+
+html,body { min-height: 100%; }
+body { .font(13px,18px); color: #222; background: #f3f3f3; }
+h1 { .font(36px, 40px); margin: 20px 0;
+	small { font-size: 50%; }
+}
+h2 { .font(28px, 30px); margin: 20px 0 10px; }
+h1,
+h2 { color: #444; font-weight: 800; letter-spacing: -1px; }
+p { margin: 20px 0; }
+strong { font-weight: bold; }
+small { font-size: 85%; }
+ins,
+del { color: #fff; text-decoration: none; padding: 0px 3px; }
+ins { background: @color1; }
+del { background: @color2; }
+
+
+table { width: 100%; margin: 20px 0; }
+td,
+th { text-align: left; padding: 5px; }
+thead { font-weight: bold;
+	td,th { background: #e3e3e3; }
+}
+tbody {
+	td,th { border-bottom: 3px solid #e3e3e3; }
+}
+
+.clearfix { .clearfix; }
+.full-width { width: 100%; }
+.narrow-width { width: 1px; }
+.nowrap { white-space: nowrap; }
+
+header { .font(15px, 24px); background: #000; overflow: auto; color: #999;
+	#nav-meta-left { float: left; }
+	#nav-meta-right { float: right; }
+}
+
+#nav-main,
+#nav-sub { position: relative; border-right: 1px solid #000; }
+
+#nav-main { background: #222; }
+#nav-sub { background: #444; }
+
+#content { position: relative; overflow: auto; padding: 0 20px 20px; }
+#sidebar { position: relative; max-width: 300px; background: #e3e3e3; padding: 0 20px 20px; }
+
+
+/* tablets and desktop screens */
+@media @tablet {
+	header { position: relative; }
+	#page-container { display: table; }
+
+	#nav-main { z-index: 999; }
+
+	#nav-main,
+	#nav-sub { display: table-cell; padding: 20px 0 0; }
+
+	#content,
+	#sidebar { display: table-cell; }
+}
+
+/* desktop screens */
+@media @desktop {
+	/* sets the min width only if the both navis are filled with content */
+	#nav-main .navi > *,
+	#nav-sub .navi > *,
+	#sidebar > * { min-width: 200px; }
+}
+
+/* CSS3 tuning */
+@media @tablet {
+	// header { box-shadow: 0px 3px 5px rgba(0,0,0,.25); }
+
+	// #nav-main,
+	// #nav-sub { border-right: 0; box-shadow: 3px 0px 5px rgba(0,0,0,.25); }
+}

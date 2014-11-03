@@ -1,0 +1,550 @@
+<!doctype html>
+<html>
+<head>
+	<title>SFS7</title>
+	<base href="~~:raw($page.base_href)~" />
+	<meta charset="utf-8" />
+
+	<link rel="stylesheet" href="css/default.css">
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,800">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link rel="shortcut icon" type="image/png" href="favicon.png">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<header>
+	<nav id="nav-meta-left">
+		<div class="card card-hero">
+			<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ1_Q9K7stWJdggnL6HueczUzvwt1aKB5mOq83zuEtfpO0RQwoxuA" alt="" />
+			<strong>
+				Ministry GmbH <small style="font-weight: normal;">powered by SFS7</small>
+			</strong>
+		</div>
+	</nav>
+
+	<nav id="nav-meta-right">
+		<div class="card card-hero">
+			<img src="http://api.randomuser.me/portraits/men/9.jpg" alt="" />
+			<!-- <img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm" alt="" /> -->
+			Hans-Jörg Mustermann
+
+			<div class="buttons">
+				<a href="" class="button">
+					<span class="fa fa-user fa-fw"></span>
+					Profil
+				</a>
+				<a href="" class="button">
+					<span class="fa fa-eye fa-sign-out"></span>
+					Abmelden
+				</a>
+			</div>
+		</div>
+	</nav>
+</header>
+
+<div class="page-container">
+	<nav id="nav-main">
+		<div class="navi">
+			<a href="" class="navi-item">
+				<span class="fa fa-home fa-fw"></span>
+				Willkommen
+			</a>
+
+			<!--
+			<a href="" class="navi-item">
+				<span class="fa fa-sitemap fa-fw"></span>
+				Seiten
+			</a>
+			<a href="" class="navi-item">
+				<span class="fa fa-list fa-fw"></span>
+				Listen
+			</a>
+			<a href="" class="navi-item">
+				<span class="fa fa-file fa-fw"></span>
+				Dateien
+			</a>
+			-->
+			<div class="navi-item navi-item-headline navi-item-small">
+				Veröffentlichen
+			</div>
+			<a href="" class="navi-item">
+				<span class="fa fa-cloud-upload fa-fw"></span>
+				Veröffentlichen
+				<span class="badge">3</span>
+			</a>
+			<a href="" class="navi-item">
+				<span class="fa fa-eye fa-fw"></span>
+				Live-Ansicht
+			</a>
+			<a href="" class="navi-item">
+				<span class="fa fa-eye fa-fw"></span>
+				Vorschau
+			</a>
+
+			<div class="navi-item navi-item-headline navi-item-small">
+				Inhalte
+			</div>
+			<div class="navi-item border-top">
+				<form action="" method="post">
+					<div class="form-field form-field-autowidth form-field-dark">
+						<select class="full-width">
+							<option>Englisch</option>
+							<option>Deutsch</option>
+						</select>
+					</div>
+				</form>
+			</div>
+			<a href="" class="navi-item is-active">
+				<span class="fa fa-sitemap fa-fw"></span>
+				Haupt-Navigation
+			</a>
+			<a href="" class="navi-item">
+				<span class="fa fa-sitemap fa-fw"></span>
+				Meta-Navigation
+			</a>
+			<a href="" class="navi-item">
+				<span class="fa fa-list fa-fw"></span>
+				Autoren
+			</a>
+			<a href="" class="navi-item">
+				<span class="fa fa-list fa-fw"></span>
+				Bücher
+			</a>
+			<a href="" class="navi-item">
+				<span class="fa fa-folder fa-fw"></span>
+				Autoren
+			</a>
+			<a href="" class="navi-item">
+				<span class="fa fa-folder fa-fw"></span>
+				Buchcover
+			</a>
+			<a href="" class="navi-item">
+				<span class="fa fa-legal fa-fw"></span>
+				Allgemein
+			</a>
+			<a href="" class="navi-item">
+				<span class="fa fa-send fa-fw"></span>
+				Newsletter
+			</a>
+
+			<div class="navi-item navi-item-headline navi-item-small">
+				Rechte
+			</div>
+			<a href="" class="navi-item">
+				<span class="fa fa-user fa-fw"></span>
+				Benutzer
+			</a>
+			<a href="" class="navi-item">
+				<span class="fa fa-users fa-fw"></span>
+				Gruppen
+			</a>
+			<a href="" class="navi-item">
+				<span class="fa fa-key fa-fw"></span>
+				Rechte
+			</a>
+
+			<div class="navi-item navi-item-headline navi-item-small">
+				Entwickler
+			</div>
+			<a href="" class="navi-item">
+				<span class="fa fa-puzzle-piece fa-fw"></span>
+				API
+			</a>
+			<a href="" class="navi-item">
+				<span class="fa fa-check-square fa-fw"></span>
+				Definitionen
+			</a>
+			<a href="" class="navi-item">
+				<span class="fa fa-database fa-fw"></span>
+				Datenbank
+			</a>
+			<a href="" class="navi-item">
+				<span class="fa fa-code fa-fw"></span>
+				HTML-Elemente
+			</a>
+		</div>
+	</nav>
+
+	<nav id="nav-sub">
+		<div class="navi navi-tree">
+			<a href="" class="navi-item"><span class="fa fa-file-text fa-fw"></span> Startseite</a>
+			<a href="" class="navi-item"><span class="fa fa-share fa-fw"></span> Classes</a>
+			<a href="" class="navi-item navi-item-hidden"><span class="fa fa-file-text fa-fw"></span> Inspirer <span class="fa fa-eye-slash fa-fw"></span></a>
+			<a href="" class="navi-item navi-item-disabled"><span class="fa fa-file-text fa-fw"></span> Supporter <span class="fa fa-plus-circle fa-fw js-toggle js-open"></span><span class="fa fa-ban fa-fw"></span></a>
+					
+			<div class="navi navi-tree">
+				<a href="" class="navi-item"><span class="fa fa-file-text fa-fw"></span> Support</a>
+				<a href="" class="navi-item"><span class="fa fa-file-text fa-fw"></span> Shop <span class="fa fa-plus-circle fa-fw js-toggle"></span></a>
+
+				<div class="navi navi-tree">
+					<a href="" class="navi-item"><span class="fa fa-file-text fa-fw"></span> Hamburg</a>
+					<a href="" class="navi-item"><span class="fa fa-file-text fa-fw"></span> Externer Shop München</a>
+				</div>
+
+			</div>
+
+			<a href="" class="navi-item is-active"><span class="fa fa-file-text fa-fw"></span> Impressum</a>
+		</div>
+
+		<div class="navi">
+			<div class="navi-item navi-item-headline navi-item-small">
+				Aktionen
+			</div>
+			<a href="" class="navi-item navi-item-small">
+				<span class="fa fa-plus fa-fw"></span>
+				Seite hinzufügen
+			</a>
+		</div>
+	</nav>
+
+	<section id="content">
+		<h1>
+			<span class="fa fa-home fa-fw"></span>
+			Willkommen
+		</h1>
+
+		<div class="message">
+			Es wurden neue Versionen des SFS7-CMS veröffentlicht.<br /><br />
+
+			Aktuelle Version: 2.0.1<br />
+			<strong>2.1.0:</strong> New Features and security fixes<br />
+			<strong>2.0.2:</strong> Security fixes<br />
+		</div>
+
+		Letzte Logins, letzte bearbeiteten Seiten/Elemente, letztes Backup-Datum (Support-Vertrag-fördernd)
+
+		<h1>
+			<span class="fa fa-file fa-fw"></span>
+			Impressum
+		</h1>
+
+		<nav id="item" class="box box-left box-top">
+			<a href="" class="button is-active">
+				<span class="fa fa-eye fa-fw"></span>
+				Inhalte
+			</a>
+			<a href="" class="button">
+				<span class="fa fa-arrows fa-fw"></span>
+				Verschieben
+			</a>
+			<a href="" class="button">
+				<span class="fa fa-trash fa-fw"></span>
+				Löschen
+			</a>
+			<a href="" class="button">
+				<span class="fa fa-plus fa-fw"></span>
+				Unterseite hinzufügen
+			</a>
+		</nav>
+
+		<div class="box box-left">
+			<a href="" class="button">
+				<span class="fa fa-eye fa-fw"></span>
+				Content-Bereich
+			</a>
+			<a href="" class="button">
+				<span class="fa fa-eye fa-fw"></span>
+				Sidebar
+			</a>
+		</div>
+
+		<div class="message message-error message-form">
+			<span class="fa fa-info-circle"></span>
+			Bitte korrigiere die rot markierten Felder.
+		</div>
+
+		<form action="" method="post">
+			<div class="form-row">
+				<div class="form-label">
+					<label>Titel</label>
+					<span class="fa fa-asterisk"></span>
+				</div>
+				<div class="form-field">
+					<input type="text" class="required js-slug-source">
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-label form-label-error">
+					<label>URL-Segment</label>
+					<span class="fa fa-asterisk"></span>
+					<div class="form-info">
+						<span class="fa fa-info-circle"></span>
+						Bitte blabla beachten.
+					</div>
+				</div>
+				<div class="form-field">
+					<div class="form-extension">
+						<div class="prefix">http://ministry.de/</div>
+						<div><input type="text" class="js-slug-target"></div>
+						<div class="suffix">$</div>
+					</div>
+					
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-label">
+					<label>Versteckt</label>
+					<span class="fa fa-asterisk"></span>
+				</div>
+				<div class="form-field">
+					<label><input type="radio"> Ja</label>
+					<label><input type="radio"> Nein</label>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-label">
+					<label>Öffentlich</label>
+					<span class="fa fa-asterisk"></span>
+				</div>
+				<div class="form-field">
+					<label><input type="radio"> Ja</label>
+					<label><input type="radio"> Nein</label>
+				</div>
+			</div>
+
+			<div class="form-row">
+				<div class="form-label">
+					<label>Position</label>
+					<span class="fa fa-asterisk"></span>
+				</div>
+				<div class="form-field">
+					<select>
+						<option>hinter Supporter</option>
+					</select>
+				</div>
+			</div>
+		</form>
+
+		<h2>Inhalte</h2>
+
+		<div class="form-row">
+			<div class="form-label">
+				<label>Seitenvorlage</label>
+			</div>
+			<div class="form-field">
+				Standard
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="form-label">
+				<label>Input-Feld</label>
+				<span class="fa fa-asterisk"></span>
+			</div>
+			<div class="form-field">
+				<input type="text" class="required">
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="form-label">
+				<label>Input-Feld</label>
+			</div>
+			<div class="form-field">
+				<textarea></textarea>
+			</div>
+		</div>
+
+		<div class="box box-bottom box-right">
+			<a href="" class="button button-strong">
+				<span class="fa fa-check-circle fa-fw"></span>
+				Speichern
+			</a>
+		</div>
+
+		<h1>
+			<span class="fa fa-list fa-fw"></span>
+			Liste
+		</h1>
+
+		<nav id="item" class="box box-left box-top">
+			<a href="" class="button is-active">
+				<span class="fa fa-eye fa-fw"></span>
+				Inhalte
+			</a>
+			<a href="" class="button">
+				<span class="fa fa-plus fa-fw"></span>
+				Eintrag hinzufügen
+			</a>
+			<a href="" class="button">
+				<span class="fa fa-search fa-fw"></span>
+				Suchen
+			</a>
+			<a href="" class="button">
+				<span class="fa fa-download fa-fw"></span>
+				Exportieren
+			</a>
+		</nav>
+
+		<div class="box box-left">
+			<h2>512 Einträge</h2>
+			<a href="" class="button">
+				<span class="fa fa-chevron-left fa-fw"></span>
+				Vorherige
+			</a>
+			<a href="" class="button">1</a>
+			<a href="" class="button">2</a>
+			<a href="" class="button is-active">3</a>
+			<a href="" class="button">4</a>
+			<p class="button">&hellip;</p>
+			<a href="" class="button">217</a>
+			<a href="" class="button">
+				Weitere
+				<span class="fa fa-chevron-right fa-fw"></span>
+			</a>
+		</div>
+
+		<table>
+			<colgroup>
+				<col width="1">
+				<col>
+				<col>
+			</colgroup>
+			<thead>
+				<tr>			
+					<th></th>
+					<th>Name</th>
+					<th>E-Mail</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>			
+					<td>
+						<a href="" class="button button-small">
+							<span class="fa fa-pencil fa-fw"></span>
+							Editieren
+						</a>
+					</td>
+					<td>Christoph Erdmann</td>
+					<td>christoph.erdmann@ministrygroup.de</td>
+				</tr>
+				<tr>			
+					<td>
+						<a href="" class="button button-small">
+							<span class="fa fa-pencil fa-fw"></span>
+							Editieren
+						</a>
+					</td>
+					<td>David Cummins</td>
+					<td>david.cummins@ministrygroup.de</td>
+				</tr>
+				<tr>			
+					<td>
+						<a href="" class="button button-small">
+							<span class="fa fa-pencil fa-fw"></span>
+							Editieren
+						</a>
+					</td>
+					<td>Christoph Erdmann</td>
+					<td>christoph.erdmann@ministrygroup.de</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h1>
+			<span class="fa fa-cloud-upload fa-fw"></span>
+			Veröffentlichen
+		</h1>
+
+		<div class="box box-left">
+			<a href="" class="button button-strong">
+				<span class="fa fa-cloud-upload fa-fw"></span>
+				Alle Änderungen veröffentlichen
+			</a>
+			<a href="" class="button">
+				<span class="fa fa-undo fa-fw"></span>
+				Alle Änderungen auf Live-Stand zurücksetzen
+			</a>
+		</div>
+
+		<h2>Es gibt Änderungen von 2 Personen</h2>
+
+		<div class="box box-left">
+			<div class="card">
+				<img src="http://api.randomuser.me/portraits/men/9.jpg" alt="" />
+				David Cummins
+			</div>
+
+			<div class="card">
+				<img src="http://api.randomuser.me/portraits/men/8.jpg" alt="" />
+				Christoph Erdmann
+			</div>
+		</div>
+
+		<table>
+			<colgroup>
+				<col>
+				<col width="1">
+			</colgroup>
+			<thead>
+				<tr>			
+					<th>Unterschied zu Live-Stand</th>
+					<th class="narrow-width">Beteiligt</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<span class="fa fa-file-text fa-fw"></span>
+						Impressum
+
+						<span class="fa fa-chevron-right fa-fw"></span>
+						Sidebar
+
+						<span class="fa fa-chevron-right fa-fw"></span>
+						Hotline
+
+						<span class="fa fa-chevron-right fa-fw"></span>
+						<a href="" class="button button-small">
+							Copy
+						</a>
+						<br />
+						<a href="" class="button button-small">
+							<span class="fa fa-chevron-right fa-fw"></span>
+							Änderungen zeigen
+						</a>
+						<div class="box box-strong">
+							Hotline<br />
+							========<br />
+							<br />
+							Rufen Sie uns <ins>einfach</ins> an unter:<br />
+							+49 40 - 27 15 15 <del>39</del><ins>0</ins>
+						</div>
+					</td>
+					<td>
+						<div class="card">
+							<img src="http://api.randomuser.me/portraits/men/9.jpg" alt="" />
+							David Cummins
+						</div>
+						<div class="card">
+							<img src="http://api.randomuser.me/portraits/men/8.jpg" alt="" />
+							Christoph Erdmann
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<aside id="sidebar">
+		<h2>Hilfreiches</h2>
+
+		<p>
+			Benutzer werden in SFS7 Gruppen zugeordnet und nur Gruppen haben Berechtigungen.
+		</p>
+
+		<p>
+			Soll also ein einzelner Benutzer bestimmte Berechtigungen haben, muss für diesen Benutzer eine Gruppe erstellt werden.
+		</p>
+	</aside>
+</div>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="javascript/default.js"></script>
+
+</body>

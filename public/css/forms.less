@@ -1,0 +1,25 @@
+form { display: block; }
+label {}
+input[type=text],
+textarea { box-sizing: border-box; padding: 5px 10px; margin: 0; border: 0; background: #e3e3e3; color: #222; .font(13px, 20px); width: 100%; }
+textarea { height: 150px; }
+input[type=text]:focus { background: #fff; }
+select { padding: 5px 10px; margin: 0; border: 0; background: #e3e3e3; color: #222; .font(13px, 20px); max-width: 100%; }
+
+.form-row { clear: left; margin: 5px 0; .clearfix; }
+.form-label { box-sizing: border-box; width: 39%; padding: 0 10px 0 0; margin: 0 1% 0 0; float: left; line-height: 30px; text-align: right; background: #e3e3e3;
+	&.form-label-error { background: @color2; color: #fff; }
+}
+.form-field { width: 60%; float: left; line-height: 30px;
+	&.form-field-autowidth { width: 100%; float: none; }
+	&.form-field-dark {
+		select { background: #444; color: #eee; }
+	}
+}
+
+.form-info { .font(12px, 18px); padding: 0 0 5px 0; }
+.form-extension { display: table; width: 100%;
+	> div.prefix,
+	> div.suffix { display: table-cell; width: 1px; background: #ccc; padding: 0 10px; border-right: 3px solid #f3f3f3; }
+	> div.suffix { border-right: 0; border-left: 3px solid #f3f3f3; }
+}

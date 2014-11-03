@@ -1,0 +1,15 @@
+RewriteEngine on
+
+	# This htaccess is for redirecting to the public folder
+	# It is not used if the document root is pointing to the "public" folder.
+	# You should not need to do any changes here
+
+
+# Map feature public requests to the correct subfolder
+# ----------------------------------------
+RewriteRule features/(.+)/public/(.+) app/features/$1/public/$2 [L]
+
+# Map all requests to the public subfolder
+# ----------------------------------------
+RewriteCond %{REQUEST_URI} !^public/
+RewriteRule ^(.*)$ public/$1?morrow_basehref_depth=1 [QSA]
