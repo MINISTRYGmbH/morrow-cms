@@ -6,7 +6,7 @@ return [
 // security
 	'security.csp.default-src'		=> "'self'",
 	'security.csp.script-src'		=> "'self' cdnjs.cloudflare.com",
-	'security.csp.img-src'			=> "'self' *.gstatic.com api.randomuser.me",
+	'security.csp.img-src'			=> "'self' *.gstatic.com lorempixel.com",
 	'security.csp.style-src'		=> "'self' 'unsafe-inline' cdnjs.cloudflare.com fonts.googleapis.com",
 	// 'security.csp.media-src'		=> "'self'",
 	// 'security.csp.object-src'	=> "'self'",

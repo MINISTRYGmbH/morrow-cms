@@ -14,7 +14,7 @@ class _Default extends Factory {
 		});
 
 		if ($this->Page->get('path.relative') === '') {
-			$this->Url->redirect('page/introduction');
+			$this->Url->redirect('login');
 		}
 	}
 

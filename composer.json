@@ -5,9 +5,8 @@
     "license": "GPL-3.0",
 	"require": {
 		"php": ">=5.4",
-        "morrow/core": "dev-master",
-		"michelf/php-markdown": "1.3.*"
-	},
+        "morrow/core": "dev-master"
+    },
     "autoload": {
         "psr-0": {
             "": "app/libraries/"
