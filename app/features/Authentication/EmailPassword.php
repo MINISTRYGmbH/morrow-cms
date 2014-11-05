@@ -1,10 +1,10 @@
 <?php
 
-namespace app\features\Permissions;
+namespace app\features\Authentication;
 use Morrow\Factory;
 use Morrow\Debug;
 
-class Permissions extends _Default {
+class EmailPassword extends _Default {
 	public function run($dom) {
 		return $this->Views_Serpent;
 	}

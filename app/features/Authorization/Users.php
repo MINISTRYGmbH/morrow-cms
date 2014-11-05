@@ -1,10 +1,10 @@
 <?php
 
-namespace app\features\Permissions;
+namespace app\features\Authorization;
 use Morrow\Factory;
 use Morrow\Debug;
 
-class Groups extends _Default {
+class Users extends _Default {
 	public function run($dom) {
 		return $this->Views_Serpent;
 	}

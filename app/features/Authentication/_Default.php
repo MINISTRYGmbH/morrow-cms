@@ -1,6 +1,6 @@
 <?php
 
-namespace app\features\Permissions;
+namespace app\features\Authentication;
 use Morrow\Factory;
 use Morrow\Debug;
 
