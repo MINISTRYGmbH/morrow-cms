@@ -11,8 +11,11 @@ class Error404 extends _Default {
 
 		if ($is_content) return '';
 
-		if (!$is_content && $this->Page->get('path.relative') !== '404') {
-			$this->Url->redirect('404');
+		$redirect		= Factory::load('Config:feature')->get('redirect');
+		if ($redirect === null) $redirect = '404';
+
+		if (!$is_content && $this->Page->get('path.relative') !== $redirect) {
+			$this->Url->redirect($redirect);
 		}
 
 		$this->Header->set('HTTP/1.0 404 Not Found');

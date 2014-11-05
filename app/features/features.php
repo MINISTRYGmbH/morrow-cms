@@ -1,19 +1,24 @@
 <?php
 
 $features = [
-	'~^permissions/users$~i' => [
+	'~^login$~i' => [
 		'#content' => [
-			['action' => 'append', 'class' => '\\app\\features\\Permissions\\Users'],
+			['action' => 'append', 'class' => '\\app\\features\\Authentication\\EmailPassword'],
 		],
 	],
-	'~^permissions/groups$~i' => [
+	'~^authorization/users$~i' => [
 		'#content' => [
-			['action' => 'append', 'class' => '\\app\\features\\Permissions\\Groups'],
+			['action' => 'append', 'class' => '\\app\\features\\Authorization\\Users'],
 		],
 	],
-	'~^permissions/permissions$~i' => [
+	'~^authorization/groups$~i' => [
 		'#content' => [
-			['action' => 'append', 'class' => '\\app\\features\\Permissions\\Permissions'],
+			['action' => 'append', 'class' => '\\app\\features\\Authorization\\Groups'],
+		],
+	],
+	'~^authorization/permissions$~i' => [
+		'#content' => [
+			['action' => 'append', 'class' => '\\app\\features\\Authorization\\Permissions'],
 		],
 	],
 	'~^developer/api$~i' => [
@@ -39,15 +44,16 @@ $features = [
 			['action' => 'append', 'class' => '\\app\\features\\Dummy\\NavSub'],
 		],
 	],
-	'~.+~i' => [
+	
+
+	'~^(?!login).+$~i' => [
 		'#nav-main' => [
 			['action' => 'append', 'class' => '\\app\\features\\Dummy\\NavMain'],
-		],
-		'#nav-main > .navi' => [
-			['action' => 'append', 'class' => '\\app\\features\\Permissions\\Headline'],
-			['action' => 'append', 'class' => '\\app\\features\\Permissions\\Users_Button'],
-			['action' => 'append', 'class' => '\\app\\features\\Permissions\\Groups_Button'],
-			['action' => 'append', 'class' => '\\app\\features\\Permissions\\Permissions_Button'],
+
+			['action' => 'append', 'class' => '\\app\\features\\Authorization\\Headline'],
+			['action' => 'append', 'class' => '\\app\\features\\Authorization\\Users_Button'],
+			['action' => 'append', 'class' => '\\app\\features\\Authorization\\Groups_Button'],
+			['action' => 'append', 'class' => '\\app\\features\\Authorization\\Permissions_Button'],
 
 			['action' => 'append', 'class' => '\\app\\features\\Developer\\Headline'],
 			['action' => 'append', 'class' => '\\app\\features\\Developer\\API_Button'],
@@ -56,7 +62,7 @@ $features = [
 			['action' => 'append', 'class' => '\\app\\features\\Developer\\HTMLElements_Button'],
 		],
 		'#content' => [
-			['action' => 'append', 'class' => '\\app\\features\\Pages\\Error404', 'config' => ['if_does_not_exist' => '//*[@id="content"]/*']],
+			['action' => 'append', 'class' => '\\app\\features\\Pages\\Error404', 'config' => ['if_does_not_exist' => '//*[@id="content"]/*', 'redirect' => 'login']],
 		],
 	],
 ];
