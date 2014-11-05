@@ -50,6 +50,10 @@ header { .font(15px, 24px); background: #000; overflow: auto; color: #999;
 
 #nav-main { background: #222; }
 #nav-sub { background: #444; }
+#nav-sub a { .font(13px, 18px); padding: 7px 10px; }
+#nav-sub a .js-toggle { float: right; width: 36px; font-size: 28px; line-height: 30px;
+	@media @tablet { font-size: 18px; line-height: 20px; }
+}
 
 #content { position: relative; overflow: auto; padding: 0 20px 20px; }
 #sidebar { position: relative; max-width: 300px; background: #e3e3e3; padding: 0 20px 20px; }
@@ -72,8 +76,8 @@ header { .font(15px, 24px); background: #000; overflow: auto; color: #999;
 /* desktop screens */
 @media @desktop {
 	/* sets the min width only if the both navis are filled with content */
-	#nav-main .navi > *,
-	#nav-sub .navi > *,
+	#nav-main > *,
+	#nav-sub > *,
 	#sidebar > * { min-width: 200px; }
 
 	#content { max-width: 600px; }

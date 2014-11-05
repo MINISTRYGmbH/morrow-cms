@@ -3,31 +3,27 @@
 
 .navi { border-top: 1px solid #000;
 	span.fa { color: #777; }
-	.navi-item { display: block; text-decoration: none; .font(15px, 18px); color: #eee; padding: 10px; border-bottom: 1px solid #000; }
-	.navi-item.is-active,
-	.navi-item.is-active span.fa { background: @color1 !important; color: #fff !important; }
-	a.navi-item:hover,
-	a.navi-item:hover span.fa {
+	a { display: block; text-decoration: none; .font(15px, 18px); color: #eee; padding: 10px; border-bottom: 1px solid #000; }
+	a.is-active,
+	a.is-active span.fa { background: @color1 !important; color: #fff !important; }
+	a:hover,
+	a:hover span.fa {
 		@media @tablet { background: @color1 !important; color: #fff !important; }
 	}
-	.navi-item-small { .font(13px, 18px); }
-	.navi-item-headline { background: rgba(0,0,0,.75); padding-top: 25px; }
-	.navi-item-disabled { color: @color2; }
-	.navi-item-hidden { color: #777; }
+	h3 { display: block; color: #777; text-decoration: none; .font(13px, 18px); padding: 25px 10px 10px; border-bottom: 1px solid #000; background: rgba(0,0,0,.75); }
+	.disabled { color: @color2; }
+	.hidden { color: #777; }
 
-	&.navi-tree { visibility: hidden;
+	.navi-tree { visibility: hidden;
 		.navi-tree { border: 0; }
-		.navi-item { .font(13px,38px); padding: 0 10px;
+		a { .font(13px,38px); padding: 0 10px;
 			@media @tablet { padding: 0 0 0 10px; line-height: 28px; }
 		}
-		.js-toggle { float: right; width: 36px; font-size: 28px; line-height: 38px;
-			@media @tablet { font-size: 18px; line-height: 28px; }
-		}
-		.navi-tree .navi-item { padding-left: 27px; }
-		.navi-tree .navi-tree .navi-item { padding-left: 44px; }
-		.navi-tree .navi-tree .navi-tree .navi-item { padding-left: 61px; }
-		.navi-tree .navi-tree .navi-tree .navi-tree .navi-item { padding-left: 78px; }
-		.navi-tree .navi-tree .navi-tree .navi-tree .navi-tree .navi-item { padding-left: 78px; }
+		.navi-tree a { padding-left: 27px; }
+		.navi-tree .navi-tree a { padding-left: 44px; }
+		.navi-tree .navi-tree .navi-tree a { padding-left: 61px; }
+		.navi-tree .navi-tree .navi-tree .navi-tree a { padding-left: 78px; }
+		.navi-tree .navi-tree .navi-tree .navi-tree .navi-tree a { padding-left: 78px; }
 		.fa-ban { color: @color2; }
 	}
 }
