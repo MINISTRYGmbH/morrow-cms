@@ -19,6 +19,6 @@ class Error404 extends _Default {
 		}
 
 		$this->Header->set('HTTP/1.0 404 Not Found');
-		return $this->Views_Serpent;
+		return new \Morrow\Views\Serpent;
 	}
 }

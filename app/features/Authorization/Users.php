@@ -6,6 +6,6 @@ use Morrow\Debug;
 
 class Users extends _Default {
 	public function run($dom) {
-		return $this->Views_Serpent;
+		return new \Morrow\Views\Serpent;
 	}
 }

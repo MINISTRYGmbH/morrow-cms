@@ -6,6 +6,6 @@ use Morrow\Debug;
 
 class Database extends _Default {
 	public function run($dom) {
-		return $this->Views_Serpent;
+		return new \Morrow\Views\Serpent;
 	}
 }
