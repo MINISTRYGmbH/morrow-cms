@@ -1,6 +1,13 @@
 <?php
 
 $features = [
+	'~^.*$~i' => [
+		'#content' => [
+			['action' => 'append', 'class' => '\\app\\features\\Authentication\\Api\\Init'],
+			['action' => 'append', 'class' => '\\app\\features\\Authentication\\Init'],
+		],
+	],
+	
 	'~^login$~i' => [
 		'#content' => [
 			['action' => 'append', 'class' => '\\app\\features\\Authentication\\EmailPassword'],
@@ -8,7 +15,7 @@ $features = [
 	],
 	'~^authorization/users$~i' => [
 		'#content' => [
-			['action' => 'append', 'class' => '\\app\\features\\Authorization\\Users'],
+			['action' => 'append', 'class' => '\\app\\features\\Authentication\\ListUsers'],
 		],
 	],
 	'~^authorization/groups$~i' => [
@@ -46,12 +53,12 @@ $features = [
 	],
 	
 
-	'~^(?!login).+$~i' => [
+	'~^(?!login|api).+$~i' => [
 		'#nav-main' => [
 			['action' => 'append', 'class' => '\\app\\features\\Dummy\\NavMain'],
 
 			['action' => 'append', 'class' => '\\app\\features\\Authorization\\Headline'],
-			['action' => 'append', 'class' => '\\app\\features\\Authorization\\Users_Button'],
+			['action' => 'append', 'class' => '\\app\\features\\Authentication\\Users_Button'],
 			['action' => 'append', 'class' => '\\app\\features\\Authorization\\Groups_Button'],
 			['action' => 'append', 'class' => '\\app\\features\\Authorization\\Permissions_Button'],
 
@@ -63,6 +70,11 @@ $features = [
 		],
 		'#content' => [
 			['action' => 'append', 'class' => '\\app\\features\\Pages\\Error404', 'config' => ['if_does_not_exist' => '//*[@id="content"]/*', 'redirect' => 'login']],
+		],
+	],
+	'~^api$~i' => [
+		'#content' => [
+			['action' => 'append', 'class' => '\\app\\features\\Api\\Api'],
 		],
 	],
 ];

@@ -10,12 +10,14 @@
 
 html,body { min-height: 100%; }
 body { .font(13px,18px); color: #222; background: #f3f3f3; }
-h1 { .font(36px, 40px); margin: 20px 0;
+#content h1 { .font(36px, 40px); margin: 20px 0;
 	small { font-size: 50%; }
 }
-h2 { .font(28px, 30px); margin: 20px 0 10px; }
-h1,
-h2 { color: #444; font-weight: 800; letter-spacing: -1px; }
+#content h2 { .font(28px, 30px); margin: 20px 0 10px; }
+#content h3 { .font(20px, 30px); margin: 20px 0 10px; }
+#content h1,
+#content h2,
+#content h3 { color: #444; font-weight: 800; letter-spacing: -1px; }
 p { margin: 20px 0; }
 strong { font-weight: bold; }
 small { font-size: 85%; }
@@ -23,7 +25,8 @@ ins,
 del { color: #fff; text-decoration: none; padding: 0px 3px; }
 ins { background: @color1; }
 del { background: @color2; }
-
+code { display: inline-block; font-family: monospace; background-color: #18bc9b; color: #fff; padding: 0 5px; }
+img { vertical-align: top; }
 
 table { width: 100%; margin: 20px 0; }
 td,
@@ -80,7 +83,7 @@ header { .font(15px, 24px); background: #000; overflow: auto; color: #999;
 	#nav-sub > *,
 	#sidebar > * { min-width: 200px; }
 
-	#content { max-width: 600px; }
+	#content { min-width: 450px; max-width: 800px; }
 }
 
 /* CSS3 tuning */

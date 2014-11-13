@@ -3,10 +3,53 @@
 	API
 </h1>
 
+~foreach ($toc as $path => $data):~
+	<h2>
+		<small>/api/</small> ~~htmlspecialchars($path)~
+	</h2>
+
+	<p>
+		~~:escape($data.description)~
+	</p>
+
+	<h3>
+		Parameters
+	</h3>
+
+	<table>
+	<colgroup>
+		<col style="width: 20%;" />
+		<col />
+	</colgroup>
+	<tbody>
+		~foreach ($data.parameters as $parameter => $description):~
+			<tr>
+				<td><code>~~$parameter~</code></td>
+				<td>~~:escape($description)~</td>
+			</tr>
+		~endforeach~
+	</tbody>
+	</table>
+~endforeach~
+
+<p>
+	Gezeigt werden alle Schnittstellen, für die der derzeitig eingeloggte User Rechte hat.
+</p>
+
+<ol>
+	<li>Ein Feature sollte auch die Möglichkeit zur API hinzufügen</li>
+	<li>Wird allerdings die API aufgerufen, werden ja die ganzen Features gar nicht aufgerufen</li>
+	<li>Sollte also die API im Core sein? Auch blöd, man will sie ja erweitern können</li>
+</ol>
+
+<p>
+	Es gibt keinen API-Key. Jeder User kann theoretisch mit seinem User auf die API zugreifen und kann das mit der API machen, was seinen Rechten entspricht.
+	Somit kann man auch die Daten schützen, weil der Frontend-Api-User nicht alles kann.
+</p>
+
 <ul>
-	<li>Anzeige des API-Keys</li>
-	<li>Die API wird auch intern zum Anlegen von Datensätzen verwendet. Somit kann man auch von außen Daten pflegen</li>
-	<li>JSON/XML-REST-API (XML notwendig?)</li>
+	<li>Die API wird auch intern zum Anlegen von Datensätzen verwendet.</li>
+	<li>JSON-REST-API</li>
 	<li>Enveloped answer</li>
 	<li>Version number in URL</li>
 	<li>Etag-Caching: Ist es möglich, sich auch das Generieren der Inhalte zu sparen?</li>

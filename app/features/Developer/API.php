@@ -6,6 +6,12 @@ use Morrow\Debug;
 
 class API extends _Default {
 	public function run($dom) {
-		return new \Morrow\Views\Serpent;
+		$view = new \Morrow\Views\Serpent;
+
+		$api = Factory::load('\Api');
+		$toc = $api->toc();
+		$view->setContent('toc', $toc);
+
+		return $view;
 	}
 }

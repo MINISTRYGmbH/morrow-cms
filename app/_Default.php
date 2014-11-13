@@ -13,9 +13,7 @@ class _Default extends Factory {
 			];
 		});
 
-		if ($this->Page->get('path.relative') === '') {
-			$this->Url->redirect('login');
-		}
+		Factory::prepare('\MongoClient', $this->Config->get('mongodb.uri'));
 	}
 
 	// edit rendered markdown blocks

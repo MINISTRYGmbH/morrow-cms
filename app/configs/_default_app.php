@@ -18,4 +18,8 @@ return [
 // routing rules
 	'router.routes'					=> [],
 	'router.fallback'				=>	function($url) { return '\app\Home'; },
+
+// mongodb
+	'mongodb.uri'					=> 'mongodb://:@ds051750.mongolab.com:51750/cms',
+	'mongodb.database'				=> 'morrow',
 ];

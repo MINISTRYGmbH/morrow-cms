@@ -47,12 +47,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MINISTRYGmbH/morrow-core.git",
-                "reference": "dac9461cd1567c75eb0565cde509f08b14b753a9"
+                "reference": "5bc9d837a35669abba9f0fdcda552ce6884dd377"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MINISTRYGmbH/morrow-core/zipball/dac9461cd1567c75eb0565cde509f08b14b753a9",
-                "reference": "dac9461cd1567c75eb0565cde509f08b14b753a9",
+                "url": "https://api.github.com/repos/MINISTRYGmbH/morrow-core/zipball/5bc9d837a35669abba9f0fdcda552ce6884dd377",
+                "reference": "5bc9d837a35669abba9f0fdcda552ce6884dd377",
                 "shasum": ""
             },
             "require": {
@@ -75,7 +75,7 @@
                 "framework",
                 "php"
             ],
-            "time": "2014-11-12 16:00:00"
+            "time": "2014-11-13 10:27:36"
         },
         {
             "name": "opauth/facebook",
