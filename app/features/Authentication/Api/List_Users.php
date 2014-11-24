@@ -4,7 +4,7 @@ namespace app\features\Authentication\Api;
 use Morrow\Factory;
 use Morrow\Debug;
 
-class ListUsers extends _Default {
+class List_Users extends _Default {
 	public static function run() {
 		$db = Factory::load('\MongoClient')->selectDB('cms');
 		

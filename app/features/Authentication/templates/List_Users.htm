@@ -1,0 +1,47 @@
+<h1>
+	<span class="fa fa-user fa-fw"></span>
+	Benutzer
+</h1>
+
+<nav id="content-nav" class="box box-left box-top">
+	<a href="" class="button is-active">
+		<span class="fa fa-eye fa-fw"></span>
+		Inhalte
+	</a>
+</nav>
+
+<table>
+<thead>
+	<tr>
+		<td></td>
+		<td>Name</td>
+		<td>E-Mail-Adresse</td>
+		<td>Erstellt</td>
+		<td>Letzter Login</td>
+	</tr>
+</thead>
+<tbody>
+	~foreach ($users as $user):~
+		<tr data-id="~~$user._id~">
+			<td><img src="//lorempixel.com/40/40/people/" alt="" /></td>
+			<td>
+				~~:escape($user.firstname)~ ~~:escape($user.lastname)~
+			</td>
+			<td>~~:escape($user.email)~</td>
+			<td style="white-space: nowrap;">
+				~~date('Y-m-d', $user.created_at->sec)~<br />
+				<small>~~date('H:i:s', $user.created_at->sec)~</small>
+			</td>
+			<td>
+				~~date('Y-m-d', $user.created_at->sec)~<br />
+				<small>~~date('H:i:s', $user.created_at->sec)~</small>
+			</td>
+		</tr>
+	~endforeach~
+</tbody>
+</table>
+
+<ul>
+	<li>Können Benutzer mehr als einer Gruppe zugeordnet werden?</li>
+</ul>
+

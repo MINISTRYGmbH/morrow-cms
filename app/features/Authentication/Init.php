@@ -10,7 +10,5 @@ class Init extends _Default {
 		if ($this->Page->get('path.relative') === '') {
 			$this->Url->redirect('login');
 		}
-
-		return '';
 	}
 }

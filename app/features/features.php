@@ -2,8 +2,11 @@
 
 $features = [
 	'~^.*$~i' => [
-		'#content' => [
-			['action' => 'append', 'class' => '\\app\\features\\Authentication\\Api\\Init'],
+		'html' => [
+			['action' => 'append', 'class' => '\\app\\features\\Authentication\\Api\\List_Users_API'],
+			['action' => 'append', 'class' => '\\app\\features\\Authentication\\Api\\Add_User_API'],
+			['action' => 'append', 'class' => '\\app\\features\\Authentication\\Api\\Edit_User_API'],
+			['action' => 'append', 'class' => '\\app\\features\\Authentication\\Api\\Delete_User_API'],
 			['action' => 'append', 'class' => '\\app\\features\\Authentication\\Init'],
 		],
 	],
@@ -13,9 +16,26 @@ $features = [
 			['action' => 'append', 'class' => '\\app\\features\\Authentication\\EmailPassword'],
 		],
 	],
-	'~^authorization/users$~i' => [
+	'~^authentication/users$~i' => [
 		'#content' => [
-			['action' => 'append', 'class' => '\\app\\features\\Authentication\\ListUsers'],
+			['action' => 'append', 'class' => '\\app\\features\\Authentication\\List_Users'],
+			['action' => 'append', 'class' => '\\app\\features\\Authentication\\Edit_User_Buttons'],
+		],
+		'#content-nav' => [
+			['action' => 'append', 'class' => '\\app\\features\\Authentication\\Add_User_Button'],
+		],
+	],
+	'~^authentication/users/add$~i' => [
+		'#content' => [
+			['action' => 'append', 'class' => '\\app\\features\\Authentication\\Add_User'],
+		],
+	],
+	'~^authentication/users/edit$~i' => [
+		'#content' => [
+			['action' => 'append', 'class' => '\\app\\features\\Authentication\\Edit_User'],
+		],
+		'#content-nav' => [
+			['action' => 'append', 'class' => '\\app\\features\\Authentication\\Delete_User_Button'],
 		],
 	],
 	'~^authorization/groups$~i' => [
