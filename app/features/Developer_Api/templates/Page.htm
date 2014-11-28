@@ -1,0 +1,51 @@
+<h1>
+	<span class="fa fa-puzzle-piece fa-fw"></span>
+	API
+</h1>
+
+~foreach ($toc as $path => $data):~
+	<h2>
+		<small>/api/</small> ~~htmlspecialchars($path)~
+	</h2>
+
+	<p>
+		~~:escape($data.description)~
+	</p>
+
+	<h3>
+		Parameters
+	</h3>
+
+	<table>
+	<colgroup>
+		<col style="width: 20%;" />
+		<col />
+	</colgroup>
+	<tbody>
+		~foreach ($data.parameters as $parameter => $description):~
+			<tr>
+				<td><code>~~$parameter~</code></td>
+				<td>~~:escape($description)~</td>
+			</tr>
+		~endforeach~
+	</tbody>
+	</table>
+~endforeach~
+
+<p>
+	Gezeigt werden alle Schnittstellen, für die der derzeitig eingeloggte User Rechte hat.
+</p>
+
+<p>
+	Es gibt keinen API-Key. Jeder User kann theoretisch mit seinem User auf die API zugreifen und kann das mit der API machen, was seinen Rechten entspricht.
+	Somit kann man auch die Daten schützen, weil man mit einem eigens eingerichteten Frontend-Api-User nicht alles kann.
+</p>
+
+<ul>
+	<li>Die API wird auch intern zum Anlegen von Datensätzen verwendet.</li>
+	<li>JSON-REST-API</li>
+	<li>Enveloped answer</li>
+	<li>Version number in URL</li>
+	<li>Etag-Caching: Ist es möglich, sich auch das Generieren der Inhalte zu sparen?</li>
+	<li>Verknüpfte Objekte können dank API direkt als Unterarray zurückgegeben werden, z.B. Autoren bei Büchern</li>
+</ul>

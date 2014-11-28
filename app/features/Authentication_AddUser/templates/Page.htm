@@ -1,0 +1,37 @@
+<h1>
+	<span class="fa fa-user fa-fw"></span>
+	Benutzer hinzufügen
+</h1>
+
+<nav id="content-nav" class="box box-left box-top">
+	<a href="" class="button">
+		<span class="fa fa-eye fa-fw"></span>
+		Inhalte
+	</a>
+</nav>
+
+<p>
+	Geben Sie hier einfach die E-Mail-Adresse des neuen Benutzers ein.
+</p>
+
+<p>
+	Nach dem Absenden des Formulars bekommt dieser Benutzer eine E-Mail mit einem Link zu einer Seite, auf der er seinen Namen und sein Passwort setzen kann.
+	Der Link zu dieser Seite ist drei Tage gültig. Danach wird der Benutzer aus dem System entfernt und muss neu hinzugefügt werden.
+</p>
+
+<form action="~~:raw($page.path.absolute)~" method="post">
+	~~$form->hidden('sent', 'true')~
+	
+	<div class="form-row">
+		~~$form->label('email', 'E-Mail-Adresse', [], true)~
+		~~$form->text('email')~
+	</div>
+
+	<div class="box box-bottom box-right">
+		<a href="" class="button button-strong js-submit">
+			<span class="fa fa-check fa-fw"></span>
+			Benutzer hinzufügen
+		</a>
+	</div>
+</form>
+

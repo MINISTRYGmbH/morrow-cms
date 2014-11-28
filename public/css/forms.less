@@ -1,3 +1,5 @@
+// main: default.less
+
 form { display: block; }
 label {}
 input[type=text],
@@ -8,7 +10,7 @@ select { padding: 5px 10px; margin: 0; border: 0; background: #e3e3e3; color: #2
 
 .form-row { clear: left; margin: 5px 0; .clearfix; }
 .form-label { box-sizing: border-box; width: 39%; padding: 0 10px 0 0; margin: 0 1% 0 0; float: left; line-height: 30px; text-align: right; background: #e3e3e3;
-	&.form-label-error { background: @color2; color: #fff; }
+	&.form-error { background: @color2; color: #fff; }
 }
 .form-field { width: 60%; float: left; line-height: 30px;
 	&.form-field-autowidth { width: 100%; float: none; }
@@ -18,6 +20,9 @@ select { padding: 5px 10px; margin: 0; border: 0; background: #e3e3e3; color: #2
 }
 
 .form-info { .font(12px, 18px); padding: 0 0 5px 0; }
+.form-error-info { display: none; }
+.form-error .form-error-info { display: block; }
+
 .form-extension { display: table; width: 100%;
 	> div.prefix,
 	> div.suffix { display: table-cell; width: 1px; background: #ccc; padding: 0 10px; border-right: 3px solid #f3f3f3; }

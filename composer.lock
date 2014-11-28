@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4fa6fd2dc0fdec2deda2c4814a819a77",
+    "hash": "e038c9bce762a2a9ea04f3847051f2cf",
     "packages": [
         {
             "name": "mcsodbrenner/serpent",
@@ -47,12 +47,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MINISTRYGmbH/morrow-core.git",
-                "reference": "5bc9d837a35669abba9f0fdcda552ce6884dd377"
+                "reference": "f72395f1bd3be00fd1027142b58161ec29980395"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MINISTRYGmbH/morrow-core/zipball/5bc9d837a35669abba9f0fdcda552ce6884dd377",
-                "reference": "5bc9d837a35669abba9f0fdcda552ce6884dd377",
+                "url": "https://api.github.com/repos/MINISTRYGmbH/morrow-core/zipball/f72395f1bd3be00fd1027142b58161ec29980395",
+                "reference": "f72395f1bd3be00fd1027142b58161ec29980395",
                 "shasum": ""
             },
             "require": {
@@ -75,7 +75,7 @@
                 "framework",
                 "php"
             ],
-            "time": "2014-11-13 10:27:36"
+            "time": "2014-11-16 15:32:38"
         },
         {
             "name": "opauth/facebook",
@@ -224,12 +224,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "b56c9b684923153112e5b72d23182b469aa44070"
+                "reference": "73b61679809615850706f1dbf88e6df2ddc05745"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/b56c9b684923153112e5b72d23182b469aa44070",
-                "reference": "b56c9b684923153112e5b72d23182b469aa44070",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/73b61679809615850706f1dbf88e6df2ddc05745",
+                "reference": "73b61679809615850706f1dbf88e6df2ddc05745",
                 "shasum": ""
             },
             "require": {
@@ -269,7 +269,7 @@
                 }
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-            "time": "2014-09-25 16:36:22"
+            "time": "2014-09-26 18:33:30"
         }
     ],
     "packages-dev": [],

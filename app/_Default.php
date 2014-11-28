@@ -14,6 +14,12 @@ class _Default extends Factory {
 		});
 
 		Factory::prepare('\MongoClient', $this->Config->get('mongodb.uri'));
+		
+		\Morrow\Form::$error_class = 'form-error';
+		$this->Validator->setMessages([
+			'required'	=> 'Pflichtfeld',
+			'email'		=> 'Ungültige E-Mail-Adresse',
+		]);
 	}
 
 	// edit rendered markdown blocks

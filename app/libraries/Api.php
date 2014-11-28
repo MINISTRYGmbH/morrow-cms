@@ -5,9 +5,6 @@ use \Morrow\Debug;
 class Api {
 	protected $_mappings = [];
 
-	public function __construct() {
-	}
-
 	public function register($path, $data = []) {
 		$this->_mappings[$path] = $data;
 	}
