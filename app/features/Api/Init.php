@@ -4,7 +4,7 @@ namespace app\features\Api;
 use Morrow\Factory;
 use Morrow\Debug;
 
-class Init extends _Default {
+class Init {
 	public function run($dom) {
 	}
 }

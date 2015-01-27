@@ -2,6 +2,7 @@
 
 $features = [
 	'~^.*$~i' => [
+		['class' => '\\app\\features\\Api\\Pre_RegisterFormHandling'],
 		['class' => '\\app\\features\\Authentication_LoginRedirect\\Pre_Redirect'],
 		['class' => '\\app\\features\\Authentication_ListUsers\\Pre_RegisterApi'],
 		['class' => '\\app\\features\\Authentication_AddUser\\Pre_RegisterApi'],
@@ -67,8 +68,8 @@ $features = [
 	],
 ];
 
-foreach ($features as $regex => $feature) {
+//foreach ($features as $regex => $feature) {
 	// ... modify here
-}
+//}
 
 return $features;

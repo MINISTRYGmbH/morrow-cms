@@ -5,32 +5,45 @@ use Morrow\Factory;
 use Morrow\Debug;
 
 class Page extends Factory {
-	public function run($dom) {
+	public function run() {
 		$view = new \Morrow\Views\Serpent;
 
-		$rules =  [
-			'email'    => ['required', 'email'],
+		$definitions = [
+			'email' => [
+				'validator' => ['required', 'email'],
+				'label' => ['E-Mail-Adresse'],
+				'field' => ['input', ['type' => 'email']],
+			],
+			'dummy2' => [
+				'validator' => ['required'],
+				'label' => ['Select'],
+				'field' => ['select', ['' => 'Bitte wählen', 'yes' => 'Ja', 'no' => 'Nein'], ['a' => 'b']],
+			],
+			'checkbox' => [
+				'validator' => ['required'],
+				'label' => ['Checkbox'],
+				'field' => ['checkbox', 'tnb'],
+			],
+			'checkbox2' => [
+				'validator' => [],
+				'label' => ['Was soll das bringen?', 'frage ich dich'],
+				'field' => ['input', ['type' => 'email']],
+			],
 		];
-
-		$input  = $this->Input->get();
-		$errors = [];
-
-		if (isset($input['sent'])) {
-			if ($data = $this->Validator->filter($input, $rules, $errors, true)) {
-				Debug::dump($data);
-			} else {
-				
-			}
-		}
 		
-		$form = Factory::load('\Form', $input, $errors);
-		$view->setContent('form', $form);
+		// How to add new field definitions
+		//\Morrow\Form::register('email', function($name){
+		//	return \Morrow\Form::_getDefaultInputHtml('email', $name, $attributes);
+		//});
 		
+		// "radiogroup" und "checkboxgroup" erstellen
 		
-		// $api	= Factory::load('\Api');
-		// $user	= $api->execute('authentication/add-user');
-		// $view->setContent('user', $user);
-
+		$form_html = Factory::load('Event')->trigger('form.handle', array(
+			'authentication/add-user',
+			$definitions
+		));
+		$view->setContent('form_html', $form_html);
+		
 		return $view;
 	}
 }

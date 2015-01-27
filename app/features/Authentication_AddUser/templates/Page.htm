@@ -19,19 +19,5 @@
 	Der Link zu dieser Seite ist drei Tage gültig. Danach wird der Benutzer aus dem System entfernt und muss neu hinzugefügt werden.
 </p>
 
-<form action="~~:raw($page.path.absolute)~" method="post">
-	~~$form->hidden('sent', 'true')~
-	
-	<div class="form-row">
-		~~$form->label('email', 'E-Mail-Adresse', [], true)~
-		~~$form->text('email')~
-	</div>
-
-	<div class="box box-bottom box-right">
-		<a href="" class="button button-strong js-submit">
-			<span class="fa fa-check fa-fw"></span>
-			Benutzer hinzufügen
-		</a>
-	</div>
-</form>
+~~:raw($form_html)~
 
