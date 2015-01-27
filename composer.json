@@ -5,7 +5,7 @@
     "license": "GPL-3.0",
 	"require": {
 		"php": ">=5.4",
-        "morrow/core": "dev-master",
+        "morrow/core": "2.0.x-dev",
         "opauth/opauth": "~0.4",
         "opauth/google": "~0.2",
         "opauth/facebook": "~0.2"
