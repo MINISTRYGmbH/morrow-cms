@@ -3,6 +3,51 @@
 	API
 </h1>
 
+
+<h2>Struktur von Features, die Formulare darstellen</h2>
+
+<h3>Pre_RegisterApi.php</h3>
+
+<p>
+	Registriert die Funktionalität dieses Features in der API, damit sie von anderen Featuren aufgerufen werden kann.
+	Das ginge auch über Events, aber nur die API-Funktionalitäten werden auch nach außen veräußert.
+</p>
+
+<pre>
+Factory::load('\Api')->register('authentication/add-user', [
+    'description'   => 'Allows to add a user.',
+    'parameters'    => [],
+    'callback'      => array('\\app\\features\\Authentication_AddUser\\models\\Api', 'run'),
+]);
+</pre>
+
+<p>
+	Es können auch weitere Formulardefinitionen hinzugefügt werden, weil diese eh per Events gerendert werden.
+</p>
+
+<pre>
+Factory::load('Event')->on('form.email.handle',
+    array('\\app\\features\\YourFeature\\Pre_FormElements', 'textarea')
+);
+</pre>
+
+<h3>Page.php</h3>
+
+<p>
+	Legt nur die Feld-Definitionen fest und übergibt diese an Event:form.handle inkl. dem API-Pfad, dem die Daten bei validem Formular übergeben werden soll.
+	Das generierte Formular-HTML wird an das Template übergeben.
+</p>
+
+<pre>
+$form_html = Factory::load('Event')->trigger('form.handle', array(
+	'authentication/add-user',
+	$form_definitions
+));
+</pre>
+
+
+
+
 ~foreach ($toc as $path => $data):~
 	<h2>
 		<small>/api/</small> ~~htmlspecialchars($path)~

@@ -9,7 +9,7 @@ $features = [
 		['class' => '\\app\\features\\Authentication_EditUser\\Pre_RegisterApi'],
 		['class' => '\\app\\features\\Authentication_DeleteUser\\Pre_RegisterApi'],
 	],
-	
+
 	'~^login$~i' => [
 		['class' => '\\app\\features\\Authentication_LoginPassword\\Page', 'action' => 'append', 'selector' => '#content'],
 		['class' => '\\app\\features\\Authentication_LoginGoogle\\Button', 'action' => 'append', 'selector' => '#alternative-logins'],

@@ -29,21 +29,21 @@ class Page extends Factory {
 				'label' => ['Was soll das bringen?', 'frage ich dich'],
 				'field' => ['input', ['type' => 'email']],
 			],
+			'radiogroup' => [
+				'validator' => [],
+				'label' => ['User defined element'],
+				'field' => ['radiogroup', ['' => 'Bitte wählen', 'yes' => 'Ja', 'no' => 'Nein']],
+			],
 		];
-		
-		// How to add new field definitions
-		//\Morrow\Form::register('email', function($name){
-		//	return \Morrow\Form::_getDefaultInputHtml('email', $name, $attributes);
-		//});
-		
+
 		// "radiogroup" und "checkboxgroup" erstellen
-		
+
 		$form_html = Factory::load('Event')->trigger('form.handle', array(
 			'authentication/add-user',
-			$definitions
+			$definitions,
 		));
 		$view->setContent('form_html', $form_html);
-		
+
 		return $view;
 	}
 }
