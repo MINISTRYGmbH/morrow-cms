@@ -1,11 +1,12 @@
 
 // navi tree functionality
+/*
 $(window).load(function(){
 	'use strict';
-	
+
 	var $tree = $('.navi-tree');
 	$tree.css('visibility', 'visible');
-	
+
 	// fix the width of the expanded navigation tree
 	$tree.closest('.navi').css('min-width', $tree.closest('.navi').width() + 'px');
 
@@ -33,24 +34,17 @@ $(window).load(function(){
 		$('.js-slug-target').val($(this).val().replace('/', '-'));
 	});
 });
+*/
 
-$(function() {
-	'use strict';
+document.addEventListener("DOMContentLoaded", function() {
 
-	// add javascript confirmation (inline is prohibited BY CSP)
-	$('body').on('click', 'a[data-confirm]', function(e){
-		return confirm($(this).attr('data-confirm'));
-	});
+	// submit functionality for all elements with .js-submit
+	var elements = document.getElementsByClassName('js-submit');
+	for (var i = 0; i < elements.length; i++) {
+		elements[i].addEventListener('click', function(e){
+			e.preventDefault();
+			this.parentNode.parentNode.submit();
+		});
+	}
 	
-	// add javascript submit for links (inline is prohibited by CSP)
-	$('body').on('click', 'a.js-submit', function(e){
-		e.preventDefault();
-		$(this).closest('form').submit();
-	});
-
-	// add javascript submit for submit (inline is prohibited by CSP)
-	$('body').on('change', 'select.js-submit', function(e){
-		e.preventDefault();
-		$(this).closest('form').submit();
-	});
 });

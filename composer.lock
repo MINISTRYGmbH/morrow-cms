@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e038c9bce762a2a9ea04f3847051f2cf",
+    "hash": "f6a6d609f02ccbd4f6ea618e6a949bf2",
     "packages": [
         {
             "name": "mcsodbrenner/serpent",
@@ -43,16 +43,16 @@
         },
         {
             "name": "morrow/core",
-            "version": "dev-master",
+            "version": "2.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MINISTRYGmbH/morrow-core.git",
-                "reference": "f72395f1bd3be00fd1027142b58161ec29980395"
+                "reference": "a2c568ea6c20d5aee3fd590cca9a014a8897ec1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MINISTRYGmbH/morrow-core/zipball/f72395f1bd3be00fd1027142b58161ec29980395",
-                "reference": "f72395f1bd3be00fd1027142b58161ec29980395",
+                "url": "https://api.github.com/repos/MINISTRYGmbH/morrow-core/zipball/a2c568ea6c20d5aee3fd590cca9a014a8897ec1c",
+                "reference": "a2c568ea6c20d5aee3fd590cca9a014a8897ec1c",
                 "shasum": ""
             },
             "require": {
@@ -75,7 +75,7 @@
                 "framework",
                 "php"
             ],
-            "time": "2014-11-16 15:32:38"
+            "time": "2015-01-27 16:52:14"
         },
         {
             "name": "opauth/facebook",
@@ -279,6 +279,7 @@
         "morrow/core": 20
     },
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
         "php": ">=5.4"
     },

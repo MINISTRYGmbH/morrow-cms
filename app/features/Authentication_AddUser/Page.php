@@ -10,37 +10,18 @@ class Page extends Factory {
 
 		$definitions = [
 			'email' => [
-				'validator' => ['required', 'email'],
+				'validator' => ['required', /*'email'*/],
 				'label' => ['E-Mail-Adresse'],
 				'field' => ['input', ['type' => 'email']],
 			],
-			'dummy2' => [
-				'validator' => ['required'],
-				'label' => ['Select'],
-				'field' => ['select', ['' => 'Bitte wählen', 'yes' => 'Ja', 'no' => 'Nein'], ['a' => 'b']],
-			],
-			'checkbox' => [
-				'validator' => ['required'],
-				'label' => ['Checkbox'],
-				'field' => ['checkbox', 'tnb'],
-			],
-			'checkbox2' => [
-				'validator' => [],
-				'label' => ['Was soll das bringen?', 'frage ich dich'],
-				'field' => ['input', ['type' => 'email']],
-			],
-			'radiogroup' => [
-				'validator' => [],
-				'label' => ['User defined element'],
-				'field' => ['radiogroup', ['' => 'Bitte wählen', 'yes' => 'Ja', 'no' => 'Nein']],
-			],
 		];
 
-		// "radiogroup" und "checkboxgroup" erstellen
-
+		// generate html
 		$form_html = Factory::load('Event')->trigger('form.handle', array(
-			'authentication/add-user',
 			$definitions,
+			Factory::load('Language')->_('Invite'),
+			'authentication/add-user',
+			'The user was successfully invited.'
 		));
 		$view->setContent('form_html', $form_html);
 

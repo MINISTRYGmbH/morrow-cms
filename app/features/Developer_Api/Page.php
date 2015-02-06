@@ -8,7 +8,7 @@ class Page {
 	public function run($dom) {
 		$view = new \Morrow\Views\Serpent;
 
-		$api = Factory::load('\Api');
+		$api = Factory::load('\app\features\Core\Api');
 		$toc = $api->toc();
 		$view->setContent('toc', $toc);
 

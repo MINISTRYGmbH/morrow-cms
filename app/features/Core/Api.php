@@ -1,6 +1,8 @@
 <?php
 
-use \Morrow\Debug;
+namespace app\features\Core;
+use Morrow\Factory;
+use Morrow\Debug;
 
 class Api {
 	protected $_mappings = [];
@@ -10,7 +12,7 @@ class Api {
 	}
 
 	public function execute($path, $parameters = []) {
-		return call_user_func_array($this->_mappings[$path]['callback'], $parameters);
+		return call_user_func($this->_mappings[$path]['callback'], $parameters);
 	}
 
 	public function toc($path = null) {

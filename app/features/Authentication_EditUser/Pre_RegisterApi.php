@@ -6,7 +6,7 @@ use Morrow\Debug;
 
 class Pre_RegisterApi {
 	public function run($dom) {
-		Factory::load('\Api')->register('authentication/edit-user', [	
+		Factory::load('\app\features\Core\Api')->register('authentication/edit-user', [	
 			'description'	=> 'Allows to edit a user.',
 			'parameters'	=> [],
 			'callback'		=> array('\\app\\features\\Authentication\\Api\\Edit_User', 'run'),

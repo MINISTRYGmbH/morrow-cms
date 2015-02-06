@@ -14,7 +14,7 @@
 </p>
 
 <pre>
-Factory::load('\Api')->register('authentication/add-user', [
+Factory::load('\app\features\Core\Api')->register('authentication/add-user', [
     'description'   => 'Allows to add a user.',
     'parameters'    => [],
     'callback'      => array('\\app\\features\\Authentication_AddUser\\models\\Api', 'run'),
@@ -22,14 +22,15 @@ Factory::load('\Api')->register('authentication/add-user', [
 </pre>
 
 <p>
-	Es können auch weitere Formulardefinitionen hinzugefügt werden, weil diese eh per Events gerendert werden.
+	Es können auch weitere Formulardefinitionen hinzugefügt werden:
 </p>
 
 <pre>
-Factory::load('Event')->on('form.email.handle',
-    array('\\app\\features\\YourFeature\\Pre_FormElements', 'textarea')
-);
+Factory::load('Event')->trigger('form.register_field', ['checkboxgroup', '\\app\\features\\Api\\Form']);
 </pre>
+
+In diesem Fall hieße das neue Feld <code>checkboxgroup</code> und daher müsste es auch eine Methode mit diesem Namen in der angegebenen Klasse geben.
+Die Klasse sollte <code>\app\features\Core\Form</code> extenden.
 
 <h3>Page.php</h3>
 

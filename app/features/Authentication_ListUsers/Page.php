@@ -7,8 +7,8 @@ use Morrow\Debug;
 class Page {
 	public function run($dom) {
 		$view	= new \Morrow\Views\Serpent;
-		
-		$api	= Factory::load('\Api');
+
+		$api	= Factory::load('\app\features\Core\Api');
 		$users	= $api->execute('authentication/list-users');
 		$view->setContent('users', $users);
 
