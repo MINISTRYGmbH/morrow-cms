@@ -1,23 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<morrowcms>
-	<pages>
-		<item id="54d4b441ef657.78259407">
-			<meta>
-				<description>kfhsdkljghdsfg</description>
-			</meta>
-			<data>
-				<foo>bar</foo>
-				<foo2>bar2</foo2>
-			</data>
-		</item>
-	</pages>
-	<logs>
-	</logs>
-	<users>
-		<item id="54d4b4415a35d1.78259407">
-			<email>test@cerdman.com</email>
-			<firstname>Christoph</firstname>
-			<lastname>Christoph</lastname>
-		</item>
-	</users>
-</morrowcms>
+<morrowcms><logs></logs></morrowcms>
