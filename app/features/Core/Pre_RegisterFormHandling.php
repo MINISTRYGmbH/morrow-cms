@@ -17,6 +17,17 @@ class Pre_RegisterFormHandling {
 			return Factory::load('Security')->checkCSRFToken();
 		}, 'CSRF token is not valid');
 
+
+
+		Factory::load('Event')->on('data.get', function($event, $path) {
+			$temp = new \app\features\Core\DOMDocument($path);
+			return $temp->documentElement;
+		});
+
+
+
+
+
 		// functionality to define form fields which are not defined in the \Morrow\Form class
 		Factory::load('Event')->on('form.register_field', function($event, $data) {
 			list($fieldname, $namespace) = $data;
