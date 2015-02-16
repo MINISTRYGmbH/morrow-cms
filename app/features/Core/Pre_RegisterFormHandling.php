@@ -61,7 +61,7 @@ class Pre_RegisterFormHandling {
 					}
 
 				} else {
-					$error_message = 'Please correct the marked fields.';
+					$error_message = 'Please correct the marked fields <small>(' . implode(', ', array_keys($errors)) . ')</small>.';
 					// trigger form failure event
 				}
 			} else {

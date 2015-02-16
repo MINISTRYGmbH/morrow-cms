@@ -54,9 +54,9 @@ class Api {
 		];
 
 		try {
-			$id = $data->find('/logs')->append('entry', []);
+			$id = $data->find('./logs')->append('entry', []);
 
-			$entry = $data->find(Data::id($id));
+			$entry = $data->findId($id);
 			$entry->setData($dummy);
 			$new = $entry->getData();
 			$new['to_change'] = 'updated';
@@ -64,7 +64,7 @@ class Api {
 			$entry->append('foo', 'bar');
 			$entry->append('foo2', ['bar', 'bar2']);
 
-			Debug::dump($data->find('/logs')->__toString());
+			Debug::dump($data->find('./logs')->__toString());
 			Debug::dump($data->find('//foo')->getContent());
 			Debug::dump($data->find('//foo2')->getContent());
 
@@ -73,7 +73,7 @@ class Api {
 			//$data->delete("//*[@id='$id']");
 			//$data->delete(Data::id($id));
 
-			Debug::dump($data->find('/logs')->__toString());
+			Debug::dump($data->find('./logs')->__toString());
 
 			//Debug::dump($bm->find());
 			die();
@@ -112,32 +112,27 @@ class Data extends \DOMDocument {
 	}
 
 	public function findAll($xpath) {
-		return $this->query($xpath);
+		return $this->xpath->query($xpath, $this->documentElement);
+	}
+
+	public function findId($id) {
+		return $this->find("//*[@id='$id']", $this);
 	}
 
 	public function find($xpath) {
-		$results = $this->query($xpath, $this->documentElement);
+		$results = $this->xpath->query($xpath, $this->documentElement);
 		return $results->length === 0 ? null : $results->item($results->length-1);
-	}
-
-	public static function id($id) {
-		return "//*[@id='$id']";
 	}
 
 	/*
 	Returns count of deleted items
 	*/
 	public function delete($xpath) {
-		$targets = $this->query($xpath, $this->documentElement);
+		$targets = $this->xpath->query($xpath, $this->documentElement);
 		foreach ($targets as $target) {
 			$target->parentNode->removeChild($target);
 		}
 		return $targets->length;
-	}
-
-	public function query($xpath, $contextnode) {
-		$query = $this->xpath->query('.' . $xpath, $contextnode);
-		return $query;
 	}
 }
 
@@ -147,8 +142,16 @@ class DOMElementFacade extends \DOMElement {
 		return $this->getAttribute($member);
 	}
 
+	public function findAll($xpath) {
+		return $this->xpath->query($xpath, $this->documentElement);
+	}
+
+	public function findId($id) {
+		return $this->find("//*[@id='$id']", $this);
+	}
+
 	public function find($xpath) {
-		$results = $this->ownerDocument->query($xpath, $this);
+		$results = $this->ownerDocument->xpath->query($xpath, $this);
 		return $results->length === 0 ? null : $results->item($results->length-1);
 	}
 
@@ -159,13 +162,13 @@ class DOMElementFacade extends \DOMElement {
 	}
 
 	public function getData() {
-		$data_child = $this->find('/data');
+		$data_child = $this->find('./data');
 		return $data_child === null ? [] : $data_child->getContent();
 	}
 
 	// returns if data node was created
 	public function setData($data) {
-		$data_child = $this->find('/data');
+		$data_child = $this->find('./data');
 		if ($data_child === null) {
 			$this->_modify('append', 'data', $data, false);
 			return true;
