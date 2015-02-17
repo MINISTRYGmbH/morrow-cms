@@ -36,12 +36,7 @@ Anforderungen
 class Api {
 	public static function run($data) {
 
-		//$bm = Factory::load('Benchmark');
-		//$bm->start();
-		$data = Factory::load('Event')->trigger('data.get', ROOT_PATH . 'data/data.xml');
-
-		//$temp = new \app\features\Core\DOMDocument(ROOT_PATH . 'data/data.xml');
-		//$data = $temp->documentElement;
+		$doc = Factory::load('Event')->trigger('data.xml.get');
 
 		$dummy = [
 			'characters' => '"\'<>&',
@@ -49,43 +44,40 @@ class Api {
 		];
 
 		try {
-			$id = $data->find('./logs')->append('entry', []);
+			$id = $doc->find('./logs')->append('entry', []);
 
-			$entry = $data->findId($id);
+			$entry = $doc->findId($id);
 			$entry->setData($dummy);
-			$new = $entry->getData();
-			$new['to_change'] = 'updated';
-			$entry->setData($new);
-			$entry->append('foo', 'bar');
-			$entry->append('foo2', ['bar', 'bar2']);
+			$data = $entry->getData();
+			$data['to_change'] = 'updated';
+			$entry->setData($data);
 
-			Debug::dump($data->find('./logs')->__toString());
-			Debug::dump($data->find('//foo')->getContent());
-			Debug::dump($data->find('//foo2')->getContent());
+			$entry->append('foo', 'bar');
+
+			$id2 = $entry->append('foo2', ['bar', 'bar2']);
 
 			// delete tests
-			//$data->delete('/logs/entry[last()]');
-			//$data->delete("//*[@id='$id']");
-			//$data->delete(Data::id($id));
+			//$doc->deleteId($id2);
+			//$doc->deleteAll('//foo2');
+			//$doc->delete('//foo2');
 
-			Debug::dump($data->find('./logs')->__toString());
+			Debug::dump($doc->find('./logs')->__toString());
 
-			//Debug::dump($bm->find());
 			die();
 
 			header('Content-Type: application/xml');
-			echo $data->saveXML();
+			echo $doc->saveXML();
 			die();
 		} catch (\Exception $e) {
 			echo '<pre>'.$e.'</pre>';
 		}
 
-		//$data['created_at'] = 12;
-		//$data['status'] = 'invited';
-		//Debug::dump($data);die();
+		//$doc['created_at'] = 12;
+		//$doc['status'] = 'invited';
+		//Debug::dump($doc);die();
 
 		try {
-			//$db->users->insert($data);
+			//$db->users->insert($doc);
 		} catch (\Exception $e) {
 			throw new \Exception('Could not invite user.');
 		}

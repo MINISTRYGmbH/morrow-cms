@@ -6,7 +6,7 @@
 
 <h2>Struktur von Features, die Formulare darstellen</h2>
 
-<h3>Pre_RegisterApi.php</h3>
+<h3>features/../Pre_RegisterApi.php</h3>
 
 <p>
 	Registriert die Funktionalität dieses Features in der API, damit sie von anderen Featuren aufgerufen werden kann.
@@ -32,7 +32,7 @@ Factory::load('Event')->trigger('form.register_field', ['checkboxgroup', '\\app\
 In diesem Fall hieße das neue Feld <code>checkboxgroup</code> und daher müsste es auch eine Methode mit diesem Namen in der angegebenen Klasse geben.
 Die Klasse sollte <code>\app\features\Core\Form</code> extenden.
 
-<h3>Page.php</h3>
+<h3>features/../Page.php</h3>
 
 <p>
 	Legt nur die Feld-Definitionen fest und übergibt diese an Event:form.handle inkl. dem API-Pfad, dem die Daten bei validem Formular übergeben werden soll.
@@ -47,20 +47,33 @@ $form_html = Factory::load('Event')->trigger('form.handle', array(
 </pre>
 
 
+<h2>Arbeiten mit Daten</h2>
 
+<h3>features/../models/Api.php</h3>
+
+<p>
+	Im Model holt man zuerst ein Bearbeitungsobjekt für die XML-Daten. Dieses Objekt macht das Arbeiten mit den Daten besonders einfach.
+	Es ist ein Objekt vom Typ DOMNode, welches aber für das CMS um zahlreiche Funktionen ergänzt wurde, die im folgenden erklärt werden.
+</p>
+
+<pre>
+$doc = Factory::load('Event')->trigger('data.xml.get');
+</pre>
+
+<h2>Registrierte API-Befehle</h2>
 
 ~foreach ($toc as $path => $data):~
-	<h2>
+	<h3>
 		<small>/api/</small> ~~htmlspecialchars($path)~
-	</h2>
+	</h3>
 
 	<p>
 		~~:escape($data.description)~
 	</p>
 
-	<h3>
+	<strong>
 		Parameters
-	</h3>
+	</strong>
 
 	<table>
 	<colgroup>

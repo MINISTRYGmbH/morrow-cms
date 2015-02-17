@@ -2,7 +2,7 @@
 
 $features = [
 	'~^.*$~i' => [
-		['class' => '\\app\\features\\Core\\Pre_RegisterFormHandling'],
+		['class' => '\\app\\features\\Core\\Pre_Core'],
 		['class' => '\\app\\features\\Authentication_LoginRedirect\\Pre_Redirect'],
 		['class' => '\\app\\features\\Authentication_ListUsers\\Pre_RegisterApi'],
 		['class' => '\\app\\features\\Authentication_AddUser\\Pre_RegisterApi'],

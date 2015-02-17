@@ -22,12 +22,22 @@ class DOMElement extends \DOMElement {
 		return $results->length === 0 ? null : $results->item($results->length-1);
 	}
 
-	public function delete($xpath) {
-		$targets = $this->ownerDocument->xpath->query($xpath, $this);
+	public function deleteAll($xpath) {
+		$targets = $this->findAll($xpath);
 		foreach ($targets as $target) {
 			$target->parentNode->removeChild($target);
 		}
 		return $targets->length;
+	}
+
+	public function deleteId($id) {
+		$target = $this->findId($id);
+		$target->parentNode->removeChild($target);
+	}
+
+	public function delete($xpath) {
+		$target = $this->find($xpath);
+		$target->parentNode->removeChild($target);
 	}
 
 	public function __toString() {
@@ -120,8 +130,8 @@ class DOMElement extends \DOMElement {
 		}
 
 		if (is_array($data) && $set_id) {
-			if ($this->getAttribute('id') !== '') {
-				$id = $this->getAttribute('id');
+			if ($node->getAttribute('id') !== '') {
+				$id = $node->getAttribute('id');
 				$node->setAttribute('id', $id);
 			} else {
 				$id = uniqid('id_', true);

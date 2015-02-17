@@ -4,7 +4,7 @@ namespace app\features\Core;
 use Morrow\Factory;
 use Morrow\Debug;
 
-class Pre_RegisterFormHandling {
+class Pre_Core {
 	public static $user_fieldnames;
 
 	public static function addElement($fieldname, $namespace) {
@@ -12,21 +12,21 @@ class Pre_RegisterFormHandling {
 	}
 
 	public function run($dom) {
+		// register xml data handler
+		Factory::load('Event')->on('data.xml.get', function($event) {
+			$doc = Factory::load('\app\features\Core\DOMDocument');
+			$doc->load(ROOT_PATH . 'data/data.xml');
+			$doc->registerNodeClass('DOMElement', 'app\features\Core\DOMElement');
+			$doc->preserveWhiteSpace = false;
+			$doc->xpath = new \DOMXpath($doc);
+
+			return $doc->documentElement;
+		});
+
 		// init the validator for the csrf token
 		Factory::load('Validator')->add('csrf_token', function(){
 			return Factory::load('Security')->checkCSRFToken();
 		}, 'CSRF token is not valid');
-
-
-
-		Factory::load('Event')->on('data.get', function($event, $path) {
-			$temp = new \app\features\Core\DOMDocument($path);
-			return $temp->documentElement;
-		});
-
-
-
-
 
 		// functionality to define form fields which are not defined in the \Morrow\Form class
 		Factory::load('Event')->on('form.register_field', function($event, $data) {
