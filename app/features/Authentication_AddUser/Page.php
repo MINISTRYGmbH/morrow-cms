@@ -10,7 +10,7 @@ class Page extends Factory {
 
 		$definitions = [
 			'email' => [
-				'validator' => ['required', /*'email'*/],
+				'validator' => ['required', 'email'],
 				'label' => ['E-Mail-Adresse'],
 				'field' => ['input', ['type' => 'email']],
 			],

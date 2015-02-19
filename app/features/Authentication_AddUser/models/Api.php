@@ -35,8 +35,8 @@ Anforderungen
 
 class Api {
 	public static function run($data) {
-
 		$doc = Factory::load('Event')->trigger('data.xml.get');
+		return;
 
 		$dummy = [
 			'characters' => '"\'<>&',
@@ -60,14 +60,6 @@ class Api {
 			//$doc->deleteId($id2);
 			//$doc->deleteAll('//foo2');
 			//$doc->delete('//foo2');
-
-			Debug::dump($doc->find('./logs')->__toString());
-
-			die();
-
-			header('Content-Type: application/xml');
-			echo $doc->saveXML();
-			die();
 		} catch (\Exception $e) {
 			echo '<pre>'.$e.'</pre>';
 		}

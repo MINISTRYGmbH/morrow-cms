@@ -38,19 +38,25 @@ class Pre_Core {
 		Factory::load('Event')->on('form.handle', function($event, $data) {
 			list($definitions, $save_button, $api_url, $success) = $data;
 
-			// add CSRF protection
-			$token = Factory::load('Security')->getCSRFToken();
-			$definitions['csrf_token'] = [
-				'validator' => ['required', 'csrf_token'],
-				'field' => ['hidden', $token],
-			];
-
 			// create validator rules and default values
 			foreach ($definitions as $fieldname => $definition) {
 				if (isset($definition['validator'])) {
 					$rules[$fieldname] = $definition['validator'];
 				}
 			}
+
+			// add CSRF protection
+			$csrftoken = Factory::load('Security')->getCSRFToken();
+			$definitions['csrf_token'] = [
+				'validator' => ['required', 'csrf_token'],
+				'field' => ['hidden', $csrftoken],
+			];
+
+			// added multiple submit protection
+			$definitions['multisubmit_token'] = [
+				'validator' => ['required'],
+				'field' => ['hidden', uniqid()],
+			];
 
 			// validate
 			$input = Factory::load('Input')->get();
@@ -66,7 +72,7 @@ class Pre_Core {
 
 					try {
 						$api = Factory::load('\app\features\Core\Api')->execute($api_url, $data);
-						$success_message = $success();
+						$success_message = $success;
 					} catch (\Exception $e) {
 						$error_message = '<small>' . $e->getFile() . ' ('.$e->getLine().')</small><br />' . $e->getMessage();
 					}
