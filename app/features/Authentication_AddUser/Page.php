@@ -21,7 +21,7 @@ class Page extends Factory {
 			$definitions,
 			Factory::load('Language')->_('Invite'),
 			'authentication/add-user',
-			'The user was successfully invited.'
+			'The user with the email address "%s" was successfully invited.'
 		));
 		$view->setContent('form_html', $form_html);
 

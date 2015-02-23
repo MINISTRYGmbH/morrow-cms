@@ -66,10 +66,6 @@ $features = [
 	'~^api$~i' => [
 		['class' => '\\app\\features\\Api\\Api', 'action' => 'append', 'selector' => '#content'],
 	],
-
-	'~^.*.*$~i' => [
-		['class' => '\\app\\features\\Core\\Post_Core'],
-	],
 ];
 
 //foreach ($features as $regex => $feature) {

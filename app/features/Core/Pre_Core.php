@@ -15,14 +15,23 @@ class Pre_Core {
 		// register xml data handler
 		Factory::load('Event')->on('data.xml.get', function($event) {
 			$doc = Factory::load('\app\features\Core\DOMDocument');
-			$doc->load(ROOT_PATH . 'data/data.xml');
-			$doc->registerNodeClass('DOMElement', 'app\features\Core\DOMElement');
-			$doc->preserveWhiteSpace = false;
-			$doc->xpath = new \DOMXpath($doc);
-
 			return $doc->documentElement;
 		});
 
+		// init the data xml class
+		$doc = Factory::load('\app\features\Core\DOMDocument');
+		
+		try {
+			$doc->load(ROOT_PATH . 'data/data.xml');
+		} catch (\Exception $e) {
+			file_put_contents(ROOT_PATH . 'data/data.xml', '<?xml version="1.0" encoding="utf-8"?><cms version="1.0"></cms>');
+			$doc->load(ROOT_PATH . 'data/data.xml');
+		}
+		
+		$doc->registerNodeClass('DOMElement', 'app\features\Core\DOMElement');
+		$doc->preserveWhiteSpace = false;
+		$doc->xpath = new \DOMXpath($doc);
+		
 		// init the validator for the csrf token
 		Factory::load('Validator')->add('csrf_token', function(){
 			return Factory::load('Security')->checkCSRFToken();
@@ -52,12 +61,6 @@ class Pre_Core {
 				'field' => ['hidden', $csrftoken],
 			];
 
-			// added multiple submit protection
-			$definitions['multisubmit_token'] = [
-				'validator' => ['required'],
-				'field' => ['hidden', uniqid()],
-			];
-
 			// validate
 			$input = Factory::load('Input')->get();
 			$errors = [];
@@ -72,7 +75,14 @@ class Pre_Core {
 
 					try {
 						$api = Factory::load('\app\features\Core\Api')->execute($api_url, $data);
-						$success_message = $success;
+						if (!is_array($api)) $api = [$api];
+
+						// secure arguments for use in success message
+						$api = array_map('htmlentities', $api);
+						
+						// POST-REDIRECT-GET pattern
+						Factory::load('Session')->setFlash('success_message', vsprintf($success, $api));
+						Factory::load('Url')->redirect(Factory::load('Page')->get('page.relative'));
 					} catch (\Exception $e) {
 						$error_message = '<small>' . $e->getFile() . ' ('.$e->getLine().')</small><br />' . $e->getMessage();
 					}
@@ -88,6 +98,12 @@ class Pre_Core {
 						$input[$fieldname] = $definition['default'];
 					}
 				}
+				
+				// added multiple submit protection
+				$definitions['multisubmit_token'] = [
+					'validator' => ['required'],
+					'field' => ['hidden', uniqid()],
+				];
 			}
 
 			// generate form instance
@@ -101,6 +117,7 @@ class Pre_Core {
 				$html .= '<div class="message message-error message-form"><span class="fa fa-exclamation-circle"></span> '.$error_message.'</div>';
 			}
 
+			$success_message = Factory::load('Session')->getFlash('success_message');
 			if (isset($success_message)) {
 				$html .= '<div class="message message-form"><span class="fa fa-exclamation-circle"></span> '.$success_message.'</div>';
 			}

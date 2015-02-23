@@ -27,17 +27,20 @@ class DOMElement extends \DOMElement {
 		foreach ($targets as $target) {
 			$target->parentNode->removeChild($target);
 		}
+		$this->save();
 		return $targets->length;
 	}
 
 	public function deleteId($id) {
 		$target = $this->findId($id);
 		$target->parentNode->removeChild($target);
+		$this->save();
 	}
 
 	public function delete($xpath) {
 		$target = $this->find($xpath);
 		$target->parentNode->removeChild($target);
+		$this->save();
 	}
 
 	public function __toString() {
@@ -151,6 +154,8 @@ class DOMElement extends \DOMElement {
 			$this->parentNode->replaceChild($node, $this);
 		}
 
+		$this->save();
+		
 		if (isset($id)) return $id;
 	}
 
@@ -167,5 +172,11 @@ class DOMElement extends \DOMElement {
 		}
 
 		return $node;
+	}
+
+	
+	public function save() {
+		// save the XML data
+		$this->ownerDocument->save($this->ownerDocument->documentURI);
 	}
 }
