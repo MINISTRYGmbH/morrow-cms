@@ -20,18 +20,18 @@ class Pre_Core {
 
 		// init the data xml class
 		$doc = Factory::load('\app\features\Core\DOMDocument');
-		
+
 		try {
 			$doc->load(ROOT_PATH . 'data/data.xml');
 		} catch (\Exception $e) {
 			file_put_contents(ROOT_PATH . 'data/data.xml', '<?xml version="1.0" encoding="utf-8"?><cms version="1.0"></cms>');
 			$doc->load(ROOT_PATH . 'data/data.xml');
 		}
-		
+
 		$doc->registerNodeClass('DOMElement', 'app\features\Core\DOMElement');
 		$doc->preserveWhiteSpace = false;
 		$doc->xpath = new \DOMXpath($doc);
-		
+
 		// init the validator for the csrf token
 		Factory::load('Validator')->add('csrf_token', function(){
 			return Factory::load('Security')->checkCSRFToken();
@@ -79,12 +79,12 @@ class Pre_Core {
 
 						// secure arguments for use in success message
 						$api = array_map('htmlentities', $api);
-						
+
 						// POST-REDIRECT-GET pattern
 						Factory::load('Session')->setFlash('success_message', vsprintf($success, $api));
 						Factory::load('Url')->redirect(Factory::load('Page')->get('page.relative'));
 					} catch (\Exception $e) {
-						$error_message = '<small>' . $e->getFile() . ' ('.$e->getLine().')</small><br />' . $e->getMessage();
+						$error_message = $e->getMessage() . '<br /><small>' . $e->getFile() . ' ('.$e->getLine().')</small>';
 					}
 
 				} else {
@@ -98,7 +98,7 @@ class Pre_Core {
 						$input[$fieldname] = $definition['default'];
 					}
 				}
-				
+
 				// added multiple submit protection
 				$definitions['multisubmit_token'] = [
 					'validator' => ['required'],
@@ -136,6 +136,16 @@ class Pre_Core {
 			$html .= '</form>';
 
 			return $html;
+		});
+
+		// functionality to validate and render a complete form
+		Factory::load('Event')->on('mail.send', function($event, $data) {
+			Debug::dump(Factory::load('Config')->get('mail'));
+			$mail = Factory::load('Mail', Factory::load('Config')->get('mail'));
+			$mail->AddAddress($data[0]);
+			$mail->Subject = $data[1];
+			$mail->Body    = preg_replace("|^\t+|m", "", trim($data[2]));
+			return $mail->Send(true);
 		});
 	}
 

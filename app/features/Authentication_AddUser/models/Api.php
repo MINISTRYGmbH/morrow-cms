@@ -5,9 +5,8 @@ use Morrow\Factory;
 use Morrow\Debug;
 
 class Api {
-	public static function run($data) {
+	public static function run($user) {
 		$doc = Factory::load('Event')->trigger('data.xml.get');
-		Debug::dump($data);
 
 		// get or create users root node
 		$users = $doc->find('./users');
@@ -17,16 +16,36 @@ class Api {
 		}
 
 		// normalise email address
-		$data['email'] = preg_replace_callback('|(.+)@([^@]+)|', function($data){
-			return $data[1] . '@' . strtolower($data[2]);
-		}, $data['email']);
-		
+		$user['email'] = preg_replace_callback('|(.+)@([^@]+)|', function($user){
+			return $user[1] . '@' . strtolower($user[2]);
+		}, $user['email']);
+
 		// search for user with the same email address
-		// ...
-		
-		
-		$users->append('user', $data);
-		return $data['email'];
+		if ($doc->find('./users/user/email[text()="'.$user['email'].'"]')) {
+			throw new \Exception('User with this email address already exists.');
+		}
+
+		// send mail
+		$body = '
+			Hello,
+
+			you were invited to become a CMS user at
+			[URL]
+		';
+
+		Factory::load('Event')->trigger('mail.send', [
+			$user['email'],
+			'You were invited to become a CMS user',
+			'
+			Hello,
+
+			you were invited to become a CMS user at
+			[URL]
+			',
+		]);
+
+		//$users->append('user', $user);
+		return $user['email'];
 	}
 }
 

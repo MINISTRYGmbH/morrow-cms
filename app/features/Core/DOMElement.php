@@ -155,7 +155,7 @@ class DOMElement extends \DOMElement {
 		}
 
 		$this->save();
-		
+
 		if (isset($id)) return $id;
 	}
 
@@ -174,7 +174,7 @@ class DOMElement extends \DOMElement {
 		return $node;
 	}
 
-	
+
 	public function save() {
 		// save the XML data
 		$this->ownerDocument->save($this->ownerDocument->documentURI);
